@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Physics Course</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/height.css">
+    <link rel="stylesheet" href="./styles/weight.css">
+    <link rel="stylesheet" href="./styles/timer.css">
+    <link rel="stylesheet" href="./styles/stopWatch.css">
+    <!-- <link rel="stylesheet" href="./styles/inclined.css"> -->
+    <link rel="stylesheet" href="./styles/sound.css">
+
+
+
+
+    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Physics Course</h1>
+            <div class="progress-bar">
+                <div class="progress-fill" id="overallProgress" style="width: 33%"></div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <button class="lesson-btn active" onclick="showLesson(1)">Motion</button>
+            <button class="lesson-btn" onclick="showLesson(2)">Gravity & Energy</button>
+            <button class="lesson-btn" onclick="showLesson(3)">Exploring Forces</button>
+            <button class="lesson-btn" onclick="showLesson(4)">Exploring Friction</button>
+            <button class="lesson-btn" onclick="showLesson(5)">Simple Machines</button>
+            <button class="lesson-btn" onclick="showLesson(6)">Measurement Explorers</button>
+            <button class="lesson-btn" onclick="showLesson(7)">Sound</button>
+        </div>
+
+        <!-- Motion and Types -->
+        <div class="lesson active" id="lesson1">
+            <h2>Types of Motion</h2>
+            <div class="interactive-demo">
+                
+                <div class="demo-canvas" id="motionCanvas">
+                    <div class="ball" id="motionBall" style="left: 50px; top: 135px;"></div>
+                </div>
+                
+                <div class="controls_motion">
+                    <button class="control-btn" onclick="startLinearMotion()">Linear Motion</button>
+                    <button class="control-btn" onclick="startCircularMotion()">Circular Motion</button>
+                    <button class="control-btn" onclick="startZigzag()">Zigzag Motion</button>
+                    <button class="control-btn" onclick="startVibrational()">Vibrational Motion</button>
+                    <button class="control-btn" onclick="stopMotion()">Stop</button>
+                </div>
+            </div>
+
+            <!-- <div class="quiz-section">
+                <div class="quiz-question">🤔 Quick Check: Which type of motion does a swing exhibit?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="checkAnswer(this, false)">Linear Motion</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, true)">Oscillatory Motion</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, false)">Circular Motion</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, false)">Rotational Motion</div>
+                </div>
+            </div> -->
+        </div>
+
+
+
+
+        <!-- Gravity & Energy -->
+        <div class="lesson" id="lesson2">
+            <h2 style="color: orange;">⚡ Gravity & Energy ⚡</h2>
+            <div class="interactive-demo" style="display: flex;
+                                                justify-content: space-between;
+                                                align-items: center;
+                                                height: 100vh;
+                                                margin: 0;
+                                                font-family: Arial, sans-serif;">
+                <div class="controls_energy">
+                    <label>Gravity: <span id="gravityValue">9.8</span> m/s²</label>
+                    <input type="range" id="gravitySlider" min="1" max="20" step="0.1" value="9.8">
+
+                    <label>Mass: <span id="massValue">1</span> kg</label>
+                    <input type="range" id="massSlider" min="1" max="10" step="0.1" value="1">
+
+                    <!-- Energy Bar -->
+                    <div class="energy-container">
+                    <div class="energy-label">Energy</div>
+                    <div class="energy-bar">
+                        <div class="energy-fill" id="energyBar"></div>
+                    </div>
+                    </div>
+
+                    <button id="gravity_startBtn">Start</button>
+                    <button id="gravity_stopBtn">Stop</button>
+                    <button id="gravity_continueBtn">Continue</button>
+                </div>
+
+                <!-- Canvas -->
+                <canvas id="gravity_canvas" width="400" height="500"></canvas>
+
+                <!-- Right equation -->
+                <div class="equation">
+                    <h3>Weight Equation</h3>
+                    <p style="color: red; font-weight: 600;">W = m × g</p>
+                    <p style="font-size: 13px; color: gray;">m = <span id="eqMass">1</span> kg</p>
+                    <p style="font-size: 13px; color: gray;">g = <span id="eqGravity">9.8</span> m/s²</p>
+                    <p style="color: green;"><strong>W = <span id="weight">9.8</span> N</strong></p>
+                </div>
+            </div>
+
+            <!-- <div class="quiz-section">
+                <div class="quiz-question">🤔 Final Challenge: Which force is responsible for keeping you on the ground?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="checkAnswer(this, false)">Friction</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, true)">Gravitational Force</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, false)">Magnetic Force</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, false)">Applied Force</div>
+                </div>
+            </div> -->
+
+        </div>
+
+
+
+
+
+        <!-- Exploring Forces -->
+        <div class="lesson" id="lesson3">
+
+            <div class="interactive-demo">
+                <h2 style="color: red;">Balanced vs Unbalanced Forces</h2>
+                <div class="demo-canvas" id="forceCanvas">
+                    <div class="ball" id="forceBall" style="left: 285px; top: 135px; background: linear-gradient(45deg, #ff6b6b, #ee5a24);"></div>
+                    <div class="force-label" id="forceStatus">Forces: Balanced</div>
+                </div>
+                
+                <div class="controls_force">
+                    <button class="control-btn" onclick="applyForce('left')">⬅️ Push Left</button>
+                    <button class="control-btn" onclick="applyForce('right')">Push Right ➡️</button>
+                    <button class="control-btn" onclick="applyForce('both')">⬅️➡️ Both</button>
+                    <button class="control-btn" onclick="resetForces()">Reset</button>
+                </div>
+            </div>
+
+
+            <div class="interactive-demo">
+                <h2 style="color: red">🔧 Effects of forces</h2>
+                
+                <div class="demo-canvas" id="shapeCanvas" style="height: 200px;">
+                    <div id="deformableObject" style="
+                        position: absolute;
+                        left: 250px;
+                        top: 80px;
+                        width: 100px;
+                        height: 40px;
+                        background: linear-gradient(45deg, #ff9a56, #ff6b95);
+                        border-radius: 20px;
+                        transition: all 0.5s ease;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-weight: bold;
+                        font-size: 12px;
+                    ">Object</div>
+                </div>
+                
+                <div class="controls_force_types">
+                    <button class="control-btn" onclick="deformObject('Shape')">Change Shape</button>
+                    <button class="control-btn" onclick="deformObject('Direction')">Change Direction ⬌</button>
+                    <button class="control-btn" onclick="deformObject('Stop Motion')">Stop Motion</button>
+                    <button class="control-btn" onclick="deformObject('Start Motion')">Start Motion</button>
+                    <button class="control-btn" onclick="resetShape()">Reset Shape</button>
+                </div>
+            </div>
+
+            <!-- <div class="quiz-section">
+                <div class="quiz-question">🤔 Final Challenge: Which force is responsible for keeping you on the ground?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="checkAnswer(this, false)">Friction</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, true)">Gravitational Force</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, false)">Magnetic Force</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, false)">Applied Force</div>
+                </div>
+            </div> -->
+        </div> 
+
+
+        <!-- Exploring Friction -->
+        <div class="lesson" id="lesson4">
+            <div class="friction-types-nav">
+                <div class="type-nav-btn active" onclick="showFrictionType('static')">
+                    <h3>🚫 Static Friction</h3>
+                    <p>Resistance to starting motion</p>
+                </div>
+                <div class="type-nav-btn" onclick="showFrictionType('sliding')">
+                    <h3>🏃 Sliding Friction</h3>
+                    <p>Resistance during sliding</p>
+                </div>
+                <div class="type-nav-btn" onclick="showFrictionType('rolling')">
+                    <h3>🎯 Rolling Friction</h3>
+                    <p>Resistance during rolling</p>
+                </div>
+                <div class="type-nav-btn" onclick="showFrictionType('fluid')">
+                    <h3>🌊 Fluid Friction</h3>
+                    <p>Resistance in fluids</p>
+                </div>
+            </div>
+
+
+            <div class="bodyContent">
+                <div class="main-content">
+                    <!-- Static Friction Section -->
+                    <div class="friction-section active" id="static-section">
+                        <div class="content-grid">
+                            <div class="animation-container">
+                                <div class="force-indicator" id="static-force">No Force Applied</div>
+                                <div class="surface rough" id="static-surface"></div>
+                                <div class="object" id="static-object">
+                                    <div class="block">PUSH →</div>
+                                </div>
+                            </div>
+
+                            <div class="controls_friction">
+                                <button class="control-btn" onclick="applyStaticForce('weak')">💪 Weak Push</button>
+                                <button class="control-btn" onclick="applyStaticForce('medium')">💪💪 Medium Push</button>
+                                <button class="control-btn" onclick="applyStaticForce('strong')">💪💪💪 Strong Push</button>
+                                <button class="control-btn" onclick="resetStatic()">🔄 Reset</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sliding Friction Section -->
+                    <div class="friction-section" id="sliding-section">
+                        <div class="content-grid">
+                        <div class="animation-container">
+                                <div class="force-indicator" id="sliding-force">Ready to Slide</div>
+                                <div class="surface" id="sliding-surface"></div>
+                                <div class="object" id="sliding-object">
+                                    <div class="block">SLIDING</div>
+                                </div>
+                            </div>
+                                <div class="controls_friction">
+                                    <button class="control-btn" onclick="startSliding('rough')">🧱 Slide on Rough Surface</button>
+                                    <button class="control-btn" onclick="startSliding('smooth')">✨ Slide on Smooth Surface</button>
+                                    <button class="control-btn" onclick="startSliding('ice')">🧊 Slide on Ice</button>
+                                    <button class="control-btn" onclick="resetSliding()">🔄 Reset</button>
+                                </div>
+                        </div>
+                    </div>
+
+                    <!-- Rolling Friction Section -->
+                    <div class="friction-section" id="rolling-section">
+                        <div class="content-grid">
+                            <div class="animation-container">
+                                <div class="force-indicator" id="rolling-force">Ready to Roll</div>
+                                <div class="surface smooth" id="rolling-surface"></div>
+                                <div class="object" id="rolling-object">
+                                    <div class="wheel" id="rolling-wheel"></div>
+                                </div>
+                            </div>
+                            <div class="controls_friction">
+                                <button class="control-btn" onclick="startRolling('ball')">⚽ Rolling Ball</button>
+                                <button class="control-btn" onclick="compareRollingSliding()">⚖️ Compare with Slidi</button>
+                                <button class="control-btn" onclick="resetRolling()">🔄 Reset</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fluid Friction Section -->
+                    <div class="friction-section" id="fluid-section">
+                        <div class="content-grid">
+                            <div class="animation-container">
+                                <div class="force-indicator" id="fluid-force">Moving Through Air</div>
+                                <div class="surface water" id="fluid-surface"></div>
+                                <div class="object" id="fluid-object">
+                                    <div class="sphere" id="fluid-sphere"></div>
+                                </div>
+                            </div>
+
+                            <div class="controls_friction">
+                                <button class="control-btn" onclick="moveInFluid('air', 'slow')">🌬️ Slow in Air</button>
+                                <button class="control-btn" onclick="moveInFluid('air', 'fast')">💨 Fast in Air</button>
+                                <button class="control-btn" onclick="moveInFluid('water', 'slow')">🌊 Slow in Water</button>
+                                <button class="control-btn" onclick="moveInFluid('water', 'fast')">🏊 Fast in Water</button>
+                                <button class="control-btn" onclick="resetFluid()">🔄 Reset</button>
+                            </div>
+                        </div>
+
+                    
+                        
+                    </div>
+                </div>
+            </div>
+            
+
+
+
+
+
+
+
+            <!-- <div class="quiz-section">
+                <div class="quiz-question">🤔 Quick Check: Which type of motion does a swing exhibit?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="checkAnswer(this, false)">Linear Motion</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, true)">Oscillatory Motion</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, false)">Circular Motion</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, false)">Rotational Motion</div>
+                </div>
+            </div> -->
+        </div>
+
+
+
+        <!-- Simple Machines -->
+        <div class="lesson" id="lesson5">
+           <div class="simple-machine-nav">
+                <div class="type-nav-btn active" onclick="showMachineType('lever')">
+                    <h3>Levers</h3>
+                    <p>It changes the amount of force needed.</p>
+                </div>
+                <div class="type-nav-btn" onclick="showMachineType('pulley')">
+                    <h3>Pulley</h3>
+                    <p>Resistance during sliding</p>
+                </div>
+                <div class="type-nav-btn" onclick="showMachineType('inclined')">
+                    <h3>Inclined</h3>
+                    <p>Resistance during rolling</p>
+                </div>
+            </div>
+
+
+
+            <div class="main-content">
+                <!-- lever Section -->
+                <div class="friction-section active" id="lever-section">
+                    <div class="content-grid">
+                        <h2>Explore the 3 Classes of Levers</h2>
+                        <div class="lever-container">
+                            <div class="bar"></div>
+                            <div id="fulcrum" class="object_lever fulcrum"></div>
+                            <div id="load" class="object_lever" style="background: tomato;"></div>
+                            <div id="force" class="object_lever force"></div>
+                        </div>
+                        <div style="display: flex; margin-bottom: 30px; justify-content: space-evenly;">
+                            <div>
+                                <label style="border: 1px solid gray;
+                                border-radius: 13px;
+                                background-color: #ffd700;
+                                padding: 11px;
+                                font-weight: 700;">Move Fulcrum</label>
+                                <input type="range" id="fulcrumSlider" min="50" max="550" value="300" class="slider">
+                            </div>
+                            
+                            <div>
+                                <label style="border: 1px solid gray;
+                                    border-radius: 13px;
+                                    background-color: #ff6347;
+                                    padding: 11px;
+                                    font-weight: 700;">Move Load</label>
+                                <input type="range" id="loadSlider" min="50" max="550" value="200" class="slider">
+                            </div>
+                        
+                            <div>
+                                <label style="border: 1px solid gray;
+                                    border-radius: 13px;
+                                    background-color: #add8e6;
+                                    padding: 11px;
+                                    font-weight: 700;">Move Force</label>
+                                <input type="range" id="forceSlider" min="50" max="550" value="400" class="slider">
+                            </div>
+                        
+                        </div>
+  
+
+                        <button style="font-size: 16px;
+                            width: 45%;
+                            right: 6%;
+                            position: absolute;
+                            bottom: 11%;
+                            font-weight: 600;" onclick="checkClass()">Check Lever Class</button>
+                        <p id="result_lever"></p>
+                    </div>
+                </div>
+
+                <!-- Pulley Section -->
+                <div class="friction-section" id="pulley-section">
+                    <div class="content-grid">
+                        
+                        <div class="pulley-system">                            
+                            <div class="animation-container" id="animationContainer">
+                                <!-- Pulley elements will be added via JavaScript -->
+                                <div class="ceiling"></div>
+                            </div>
+                            
+                            <div class="controls_pulley">
+                                <button onclick="changePulleyType('fixed')">
+                                    <i class="fas fa-puzzle-piece"></i> Fixed Pulley
+                                </button>
+                                <button onclick="changePulleyType('movable')">
+                                    <i class="fas fa-arrows-alt-v"></i> Movable Pulley
+                                </button>
+                                <button onclick="changePulleyType('compound')">
+                                    <i class="fas fa-link"></i> Compound System
+                                </button>
+                                <button onclick="liftLoad()">
+                                    <i class="fas fa-arrow-up"></i> Lift Load
+                                </button>
+                                <button onclick="resetAnimation()">
+                                    <i class="fas fa-redo"></i> Reset
+                                </button>
+                            </div>
+                            
+                            <div class="info-box">
+                                <h3>About the Current System:</h3>
+                                <p id="pulleyInfo">Choose a pulley type to see how it works!</p>
+                                <p id="effortInfo">Effort Required: --</p>
+                            </div>
+                        </div>
+                        
+                        <div class="pulley-types">
+                            <div class="pulley-card">
+                                <i class="fas fa-puzzle-piece"></i>
+                                <h3>Fixed Pulley</h3>
+                                <p>Changes direction only</p>
+                                <p>Distance: 1:1</p>
+                            </div>
+                            <div class="pulley-card">
+                                <i class="fas fa-arrows-alt-v"></i>
+                                <h3>Movable Pulley</h3>
+                                <p>Halves the effort</p>
+                                <p>Distance: 2:1</p>
+                            </div>
+                            <div class="pulley-card">
+                                <i class="fas fa-link"></i>
+                                <h3>Compound System</h3>
+                                <p>Quarters the effort</p>
+                                <p>Distance: 4:1</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inclined Section -->
+                <div class="friction-section" id="inclined-section">
+                    <div class="content-grid">
+                        <!-- <h1>Inclined</h1> -->
+                        <div class="inclined_container">
+                            <h1>Inclined Plane Simulation</h1>
+                            <div class="controls">
+                                <label>Angle: <input type="range" id="angle" min="10" max="45" value="20"> <span id="angleVal">20°</span></label>
+                                <label>Surface: 
+                                <select id="surface">
+                                    <option value="smooth">Smooth</option>
+                                    <option value="rough">Rough</option>
+                                    <option value="veryrough">Very Rough</option>
+                                </select>
+                                </label>
+                                <button id="inclined_startBtn">Start</button>
+                                <button id="inclined_resetBtn">Reset</button>
+                            </div>
+                            <canvas id="inclined_canvas" width="600" height="400"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+            <!-- <div class="quiz-section">
+                <div class="quiz-question">🤔 Quick Check: Which type of motion does a swing exhibit?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="checkAnswer(this, false)">Linear Motion</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, true)">Oscillatory Motion</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, false)">Circular Motion</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, false)">Rotational Motion</div>
+                </div>
+            </div> -->
+        </div>
+
+
+
+         <!-- Measurement Explorers  -->
+        <div class="lesson" id="lesson6">
+           <div class="simple-machine-nav">
+                <div class="type-nav-btn active" onclick="showMeasurment('Height', this)">
+                    <!-- <a href="./Measurment_Explores/Height.html"> -->
+                        <h3>Height</h3>
+                        <p>Height tells us how tall or short something is</p>
+                    <!-- </a> -->
+                </div>
+                <div class="type-nav-btn" onclick="showMeasurment('Weight', this)">
+                    <h3>Weight</h3>
+                    <p>Weight tells us how heavy or light something is</p>
+                </div>
+                <div class="type-nav-btn" onclick="showMeasurment('StopWatch', this)">
+                    <h3>StopWatch</h3>
+                    <p>A stopwatch measures how long an activity takes</p>
+                </div>
+                <div class="type-nav-btn" onclick="showMeasurment('Timer', this)">
+                    <h3>Timer</h3>
+                    <p>A timer counts down time until it ends</p>
+                </div>
+            </div>
+
+
+
+            <div class="main-content">
+                <!-- Height Section -->
+                <div class="measurment-section active" id="Height-section">
+                    <div class="content-grid">
+                        <div class="container_height">
+                            <h1><i class="fas fa-ruler-combined"></i> Tall & Short Game</h1>
+                            <div class="subtitle">10 Questions - Test your perception of height!</div>
+                            
+                            <div class="start-screen" id="startScreen">
+                                <div class="emoji-display">📏</div>
+                                <div class="question">Ready to play?</div>
+                                <button class="start-btn" onclick="startTallGame()">
+                                    <i class="fas fa-play"></i> Start Game
+                                </button>
+                            </div>
+                            
+                            <div class="stats-container" id="statsContainer" style="display: none;">
+                                <div class="stat-box">
+                                    <div class="stat-value" id="score">0</div>
+                                    <div class="stat-label">Score</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value" id="streak">0</div>
+                                    <div class="stat-label">Current Streak</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value" id="questionCount">1/10</div>
+                                    <div class="stat-label">Question</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value" id="accuracy">0%</div>
+                                    <div class="stat-label">Accuracy</div>
+                                </div>
+                            </div>
+                            
+                            <div class="progress-container" id="progressContainer" style="display: none;">
+                                <div class="progress-bar" id="progressBar"></div>
+                            </div>
+                            
+                            <div class="game-area" id="gameArea" style="display: none;">
+                                <div class="emoji-display" id="emoji">🦒</div>
+                                <div class="item-name" id="itemName">Giraffe</div>
+                                <div class="question" id="question">Is this Tall or Short?</div>
+                                
+                                <div class="buttons">
+                                    <button class="tall-btn" onclick="checkTallAnswer('tall')">
+                                        <div class="btn-icon"><i class="fas fa-long-arrow-alt-up"></i></div>
+                                        <div>Tall</div>
+                                    </button>
+                                    <button class="short-btn" onclick="checkTallAnswer('short')">
+                                        <div class="btn-icon"><i class="fas fa-long-arrow-alt-down"></i></div>
+                                        <div>Short</div>
+                                    </button>
+                                </div>
+                                
+                                <div class="feedback" id="feedback"></div>
+                            </div>
+                            
+                            <div class="results-screen" id="resultsScreen">
+                                <div class="results-title">Game Complete!</div>
+                                <div class="emoji-result" id="resultEmoji">🎉</div>
+                                <div class="final-score" id="finalScore">0/10</div>
+                                <div class="score-message" id="scoreMessage">Well done!</div>
+                                
+                                <div class="controls">
+                                    <button class="control-btn" onclick="restartHeightGame()">
+                                        <i class="fas fa-redo"></i> Play Again
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weight Section -->
+                <div class="measurment-section" id="Weight-section">
+                    <div class="content-grid">
+                            <div class="container_weight">
+                                <!-- Main Menu -->
+                                <div id="menu-screen" class="game-screen active">
+                                    <div class="menu">
+                                        <div class="menu-icon">
+                                            <i class="fas fa-weight-scale"></i>
+                                        </div>
+                                        <h1>Kids Weight Adventure</h1>
+                                        <p style="font-size: 1.3rem; color: #1a535c; margin-bottom: 30px;">
+                                            Fun games to learn about weight and comparison!
+                                        </p>
+                                        
+                                        <div class="game-options">
+                                            <div class="game-card" onclick="startWeightGame('fruits')">
+                                                <i class="fas fa-apple-alt"></i>
+                                                <h3>Fruit Fun</h3>
+                                                <p>Compare fruits and learn which is heavier</p>
+                                            </div>
+                                            
+                                            <div class="game-card" onclick="startWeightGame('animals')">
+                                                <i class="fas fa-paw"></i>
+                                                <h3>Animal Adventure</h3>
+                                                <p>Compare animals and learn fun facts</p>
+                                            </div>
+                                            
+                                            <div class="game-card" onclick="startWeightGame('mixed')">
+                                                <i class="fas fa-random"></i>
+                                                <h3>Mixed Challenge</h3>
+                                                <p>Compare different objects</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="stats-container">
+                                            <div class="stat">
+                                                <div class="stat-value" id="total-score">0</div>
+                                                <div class="stat-label">Total Score</div>
+                                            </div>
+                                            <div class="stat">
+                                                <div class="stat-value" id="games-played">0</div>
+                                                <div class="stat-label">Games Played</div>
+                                            </div>
+                                            <div class="stat">
+                                                <div class="stat-value" id="correct-answers">0</div>
+                                                <div class="stat-label">Correct Answers</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Fruit Game -->
+                                <div id="fruits-screen" class="game-screen">
+                                    <div class="header">
+                                        <h1><i class="fas fa-apple-alt"></i> Fruit Fun</h1>
+                                        <div class="score-container">Score: <span id="fruits-score">0</span></div>
+                                    </div>
+                                    
+                                    <div class="game-instruction">
+                                        Which fruit is heavier?
+                                    </div>
+                                    
+                                    <!-- <div class="scale-container">
+                                        <div class="scale-side">
+                                            <div class="scale-plate"></div>
+                                            <div class="scale-stand"></div>
+                                            <div class="scale-base"></div>
+                                        </div>
+                                        
+                                        <div class="scale-side">
+                                            <div class="scale-plate"></div>
+                                            <div class="scale-stand"></div>
+                                            <div class="scale-base"></div>
+                                        </div>
+                                    </div> -->
+                                    
+                                    <div class="comparison-container">
+                                        <div class="item" onclick="checkAnswer('fruits', 0)">
+                                            <div class="item-icon" id="fruit1-icon">🍎</div>
+                                            <div class="item-name" id="fruit1-name">Apple</div>
+                                            <div class="item-weight">Weight: <span id="fruit1-weight">150</span>g</div>
+                                        </div>
+                                        
+                                        <div class="vs">VS</div>
+                                        
+                                        <div class="item" onclick="checkAnswer('fruits', 1)">
+                                            <div class="item-icon" id="fruit2-icon">🍌</div>
+                                            <div class="item-name" id="fruit2-name">Banana</div>
+                                            <div class="item-weight">Weight: <span id="fruit2-weight">120</span>g</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="fact-box" id="fruit-fact">
+                                        Did you know? Apples float in water because 25% of their volume is air!
+                                    </div>
+                                    
+                                    <div id="fruits-message" class="message"></div>
+                                    
+                                    <button class="btn btn-back" onclick="backToMenu()">
+                                        <i class="fas fa-arrow-left"></i> Back to Menu
+                                    </button>
+                                </div>
+                                
+                                <!-- Animal Game -->
+                                <div id="animals-screen" class="game-screen">
+                                    <div class="header">
+                                        <h1><i class="fas fa-paw"></i> Animal Adventure</h1>
+                                        <div class="score-container">Score: <span id="animals-score">0</span></div>
+                                    </div>
+                                    
+                                    <div class="game-instruction">
+                                        Which animal is heavier?
+                                    </div>
+                                    
+                                    <!-- <div class="scale-container">
+                                        <div class="scale-side">
+                                            <div class="scale-plate"></div>
+                                            <div class="scale-stand"></div>
+                                            <div class="scale-base"></div>
+                                        </div>
+                                        
+                                        <div class="scale-side">
+                                            <div class="scale-plate"></div>
+                                            <div class="scale-stand"></div>
+                                            <div class="scale-base"></div>
+                                        </div>
+                                    </div> -->
+                                    
+                                    <div class="comparison-container">
+                                        <div class="item" onclick="checkAnswer('animals', 0)">
+                                            <div class="item-icon" id="animal1-icon">🐘</div>
+                                            <div class="item-name" id="animal1-name">Elephant</div>
+                                            <div class="item-weight">Weight: <span id="animal1-weight">5000</span>kg</div>
+                                        </div>
+                                        
+                                        <div class="vs">VS</div>
+                                        
+                                        <div class="item" onclick="checkAnswer('animals', 1)">
+                                            <div class="item-icon" id="animal2-icon">🐁</div>
+                                            <div class="item-name" id="animal2-name">Mouse</div>
+                                            <div class="item-weight">Weight: <span id="animal2-weight">0.02</span>kg</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="fact-box" id="animal-fact">
+                                        Did you know? Elephants are the heaviest land animals!
+                                    </div>
+                                    
+                                    <div id="animals-message" class="message"></div>
+                                    
+                                    <button class="btn btn-back" onclick="backToMenu()">
+                                        <i class="fas fa-arrow-left"></i> Back to Menu
+                                    </button>
+                                </div>
+                                
+                                <!-- Mixed Game -->
+                                <div id="mixed-screen" class="game-screen">
+                                    <div class="header">
+                                        <h1><i class="fas fa-random"></i> Mixed Challenge</h1>
+                                        <div class="score-container">Score: <span id="mixed-score">0</span></div>
+                                    </div>
+                                    
+                                    <div class="game-instruction">
+                                        Which one is heavier?
+                                    </div>
+                                    
+                                    <!-- <div class="scale-container">
+                                        <div class="scale-side">
+                                            <div class="scale-plate"></div>
+                                            <div class="scale-stand"></div>
+                                            <div class="scale-base"></div>
+                                        </div>
+                                        
+                                        <div class="scale-side">
+                                            <div class="scale-plate"></div>
+                                            <div class="scale-stand"></div>
+                                            <div class="scale-base"></div>
+                                        </div>
+                                    </div> -->
+                                    
+                                    <div class="comparison-container">
+                                        <div class="item" onclick="checkAnswer('mixed', 0)">
+                                            <div class="item-icon" id="mixed1-icon">📚</div>
+                                            <div class="item-name" id="mixed1-name">Book</div>
+                                            <div class="item-weight">Weight: <span id="mixed1-weight">500</span>g</div>
+                                        </div>
+                                        
+                                        <div class="vs">VS</div>
+                                        
+                                        <div class="item" onclick="checkAnswer('mixed', 1)">
+                                            <div class="item-icon" id="mixed2-icon">🍎</div>
+                                            <div class="item-name" id="mixed2-name">Apple</div>
+                                            <div class="item-weight">Weight: <span id="mixed2-weight">150</span>g</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="fact-box" id="mixed-fact">
+                                        Did you know? A standard book is heavier than most fruits!
+                                    </div>
+                                    
+                                    <div id="mixed-message" class="message"></div>
+                                    
+                                    <button class="btn btn-back" onclick="backToMenu()">
+                                        <i class="fas fa-arrow-left"></i> Back to Menu
+                                    </button>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+                <!-- StopWatch Section -->
+                <div class="measurment-section" id="StopWatch-section">
+                    <div class="content-grid">
+                        <!-- <h1>StopWatch</h1> -->
+                         <div class="stopwatch-container">
+                            <div class="display-container">
+                                <div class="outer-circle">
+                                    <div class="inner-circle">
+                                        <div class="time-display">
+                                            <div class="time" id="timeDisplay">00:00.00</div>
+                                            <div class="status" id="statusDisplay">Stopped</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pulse-ring" id="pulseRing" style="display: none;"></div>
+                            </div>
+
+                            <div class="controls">
+                                <button class="btn btn-start" id="stopWatch_startBtn">
+                                    <i class="fas fa-play"></i>
+                                    START
+                                </button>
+                                <button class="btn btn-stop" id="stopWatch_stopBtn" disabled>
+                                    <i class="fas fa-pause"></i>
+                                    STOP
+                                </button>
+                                <button class="btn btn-reset" id="stopWatch_resetBtn">
+                                    <i class="fas fa-redo"></i>
+                                    RESET
+                                </button>
+                            </div>
+
+                            <div class="labels">
+                                <div class="label-item">
+                                    <div class="color-dot dot-green"></div>
+                                    <span>Start</span>
+                                </div>
+                                <div class="label-item">
+                                    <div class="color-dot dot-red"></div>
+                                    <span>Stop</span>
+                                </div>
+                                <div class="label-item">
+                                    <div class="color-dot dot-gray"></div>
+                                    <span>Reset</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Timer Section -->
+                <div class="measurment-section" id="Timer-section">
+                    <div class="content-grid">
+                        <!-- <h1>Timer</h1> -->
+                         <div class="timer-container">
+                            <!-- Title -->
+                            <h1 class="title"><i class="fas fa-clock"></i> Countdown Timer</h1>
+                            
+                            <!-- Time Setting -->
+                            <div class="time-setter">
+                                <h2>Set Time</h2>
+                                <div class="time-inputs">
+                                    <div class="time-input">
+                                        <label>Minutes</label>
+                                        <input type="number" id="minutesInput" value="5" min="0">
+                                    </div>
+                                    <div class="colon">:</div>
+                                    <div class="time-input">
+                                        <label>Seconds</label>
+                                        <input type="number" id="secondsInput" value="0" min="0" max="59">
+                                    </div>
+                                </div>
+                                <button class="apply-btn" id="timer_applyBtn">Apply Time</button>
+                            </div>
+
+                            <!-- Display -->
+                            <div class="display-container">
+                                <div class="time-display" id="timeDisplay">
+                                    <div class="time-text" id="timeText">05:00</div>
+                                    <div class="finished-text" id="finishedText" style="display: none;">Time's Up! 🎉</div>
+                                </div>
+                                
+                                <!-- Progress Bar -->
+                                <div class="progress-container">
+                                    <div class="progress-label">
+                                        <span>Elapsed</span>
+                                        <span id="progressPercent">0%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" id="progressBar"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Control Buttons -->
+                            <div class="controls">
+                                <button class="btn btn-start" id="timer_startBtn">
+                                    <i class="fas fa-play"></i>
+                                    <span>START</span>
+                                </button>
+                                <button class="btn btn-stop" id="timer_stopBtn" style="display: none;">
+                                    <i class="fas fa-pause"></i>
+                                    <span>STOP</span>
+                                </button>
+                                <button class="btn btn-reset" id="timer_resetBtn">
+                                    <i class="fas fa-redo"></i>
+                                    <span>RESET</span>
+                                </button>
+                            </div>
+
+                            <!-- Info Text -->
+                            <div class="info" id="infoText">
+                                <p>Press START to begin</p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+            <!-- <div class="quiz-section">
+                <div class="quiz-question">🤔 Quick Check: Which type of motion does a swing exhibit?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="checkAnswer(this, false)">Linear Motion</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, true)">Oscillatory Motion</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, false)">Circular Motion</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, false)">Rotational Motion</div>
+                </div>
+            </div> -->
+        </div>
+
+
+
+
+        <!-- Sound -->
+
+        <div class="lesson" id="lesson7">
+           <div class="simple-machine-nav">
+                <!-- <div class="type-nav-btn active" onclick="showMeasurment('Sound', this)">
+                    <h3>Sound</h3>
+                    <p>Sound energy is the energy we hear as vibrations in the air</p> 
+                </div>  -->
+            </div>
+
+
+            <div class="main-content">
+                <!-- Height Section -->
+                <div class="measurment-section active" id="Height-section">
+                    <div class="content-grid">
+                        <!-- <h1>SOUND</h1> -->
+                         <div class="sound_container">
+                            <div class="header">
+                                <h1>🌊 Sound Waves in Different Media</h1>
+                                <p>Interactive study of sound wave behavior in air, water, and plastic</p>
+                            </div>
+                            
+                            <div class="content">
+                                <!-- Air Waves -->
+                                <div class="wave-container air-wave">
+                                    <div class="wave-title">
+                                        <div class="wave-icon air-icon">🌪️</div>
+                                        Sound Waves in Air
+                                    </div>
+                                    <canvas class="wave-canvas" id="airCanvas" width="800" height="120"></canvas>
+                                    <div class="wave-info">
+                                        <div class="info-card">
+                                            <div class="info-label">Speed (m/s)</div>
+                                            <div class="info-value">343</div>
+                                        </div>
+                                        <div class="info-card">
+                                            <div class="info-label">Density (kg/m³)</div>
+                                            <div class="info-value">1.2</div>
+                                        </div>
+                                        <div class="info-card">
+                                            <div class="info-label">Wavelength (m)</div>
+                                            <div class="info-value" id="airWavelength">0.34</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Water Waves -->
+                                <div class="wave-container water-wave">
+                                    <div class="wave-title">
+                                        <div class="wave-icon water-icon">💧</div>
+                                        Sound Waves in Water
+                                    </div>
+                                    <canvas class="wave-canvas" id="waterCanvas" width="800" height="120"></canvas>
+                                    <div class="wave-info">
+                                        <div class="info-card">
+                                            <div class="info-label">Speed (m/s)</div>
+                                            <div class="info-value">1482</div>
+                                        </div>
+                                        <div class="info-card">
+                                            <div class="info-label">Density (kg/m³)</div>
+                                            <div class="info-value">1000</div>
+                                        </div>
+                                        <div class="info-card">
+                                            <div class="info-label">Wavelength (m)</div>
+                                            <div class="info-value" id="waterWavelength">1.48</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Plastic Waves -->
+                                <div class="wave-container plastic-wave">
+                                    <div class="wave-title">
+                                        <div class="wave-icon plastic-icon">🔧</div>
+                                        Sound Waves in Plastic
+                                    </div>
+                                    <canvas class="wave-canvas" id="plasticCanvas" width="800" height="120"></canvas>
+                                    <div class="wave-info">
+                                        <div class="info-card">
+                                            <div class="info-label">Speed (m/s)</div>
+                                            <div class="info-value">2300</div>
+                                        </div>
+                                        <div class="info-card">
+                                            <div class="info-label">Density (kg/m³)</div>
+                                            <div class="info-value">920</div>
+                                        </div>
+                                        <div class="info-card">
+                                            <div class="info-label">Wavelength (m)</div>
+                                            <div class="info-value" id="plasticWavelength">2.30</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Controls -->
+                                <div class="controls">
+                                    <div class="control-group">
+                                        <div class="control-label">Frequency (Hz): <span id="frequencyValue">1000</span></div>
+                                        <input type="range" id="frequencySlider" class="slider" min="100" max="2000" value="1000" step="100">
+                                    </div>
+                                    
+                                    <button class="play-btn" onclick="toggleAnimation()">▶️ Start Animation</button>
+                                    <button class="play-btn" onclick="resetWaves()">🔄 Reset Waves</button>
+                                </div>
+
+                                <!-- Key Insights -->
+                                <!-- <div class="key-insights">
+                                    <div class="insight-title">Key Insights</div>
+                                    <ul class="insight-list">
+                                        <li><strong>Speed increases with medium stiffness:</strong> Sound travels fastest in rigid materials like plastic</li>
+                                        <li><strong>Wavelength varies with speed:</strong> Higher speed = longer wavelength at same frequency</li>
+                                        <li><strong>Density affects transmission:</strong> Denser media can carry more energy but don't always mean faster speed</li>
+                                        <li><strong>Frequency remains constant:</strong> Only speed and wavelength change between media</li>
+                                    </ul>
+                                </div> -->
+                                
+                                <!-- Comparison Table -->
+                                <!-- <table class="comparison-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Medium</th>
+                                            <th>Speed (m/s)</th>
+                                            <th>Density (kg/m³)</th>
+                                            <th>Wavelength at 1000 Hz (m)</th>
+                                            <th>Characteristics</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="air-row">
+                                            <td><strong>Air 🌪️</strong></td>
+                                            <td>343</td>
+                                            <td>1.2</td>
+                                            <td>0.343</td>
+                                            <td>Slowest speed, lowest density</td>
+                                        </tr>
+                                        <tr class="water-row">
+                                            <td><strong>Water 💧</strong></td>
+                                            <td>1482</td>
+                                            <td>1000</td>
+                                            <td>1.482</td>
+                                            <td>Medium speed, high density</td>
+                                        </tr>
+                                        <tr class="plastic-row">
+                                            <td><strong>Plastic 🔧</strong></td>
+                                            <td>2300</td>
+                                            <td>920</td>
+                                            <td>2.300</td>
+                                            <td>Fastest speed, solid material</td>
+                                        </tr>
+                                    </tbody>
+                                </table> -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!-- <div class="quiz-section">
+                <div class="quiz-question">🤔 Quick Check: Which type of motion does a swing exhibit?</div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="checkAnswer(this, false)">Linear Motion</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, true)">Oscillatory Motion</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, false)">Circular Motion</div>
+                    <div class="quiz-option" onclick="checkAnswer(this, false)">Rotational Motion</div>
+                </div>
+            </div> -->
+        </div>
+
+                
+    </div> 
+
+
+
+<script src="./scripts/script.js"></script>
+<script src="./Scripts/Measurment_Explores.js"></script>
+<script src="./Scripts/SimpleMachine.js"></script>
+<script src="./Scripts/Sound.js"></script>
+
+
+
+
+         
+
+
+
+
+        
+
+
+

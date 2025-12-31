@@ -1,0 +1,311 @@
+.container_weight {
+            width: 100%;
+            max-width: 1000px;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border: 10px solid #ff9e7d;
+        }
+
+        .container_weight .game-screen {
+            padding: 30px;
+            display: none;
+        }
+
+        .container_weight .active {
+            display: block;
+        }
+
+        /* Header Styles */
+        .container_weight .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px dashed #ff9e7d;
+        }
+
+        .container_weight .header h1 {
+            color: #ff6b6b;
+            font-size: 2.2rem;
+            text-shadow: 2px 2px 0 #ffe66d;
+        }
+
+        .container_weight .score-container {
+            background: #4ecdc4;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 0 #2a9d8f;
+        }
+
+        /* Menu Styles */
+        .container_weight .menu {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .container_weight .menu h1 {
+            color: #ff6b6b;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 0 #ffe66d;
+        }
+
+        .container_weight .menu-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            color: #ff9e7d;
+        }
+
+        .container_weight .game-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .container_weight .game-card {
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .container_weight .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .container_weight .game-card i {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            color: #4a69bd;
+        }
+
+        .container_weight.game-card h3 {
+            color: #1e3799;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .container_weight .game-card p {
+            color: #0c2461;
+            font-size: 1rem;
+        }
+
+        /* Game Styles */
+        .container_weight .game-title {
+            text-align: center;
+            color: #ff6b6b;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0 #ffe66d;
+        }
+
+        .container_weight.game-instruction {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #1a535c;
+            font-weight: bold;
+        }
+
+        /* Comparison Container */
+        .container_weight .comparison-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        .container_weight .item {
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            width: 250px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border: 5px solid #ff9e7d;
+        }
+
+        .container_weight .item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .container_weight .item-icon {
+            font-size: 5rem;
+            margin-bottom: 15px;
+        }
+
+        .container_weight .item-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1a535c;
+            margin-bottom: 10px;
+        }
+
+        .container_weight .item-weight {
+            font-size: 1.2rem;
+            color: #1a535c;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 5px 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .container_weight .vs {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-shadow: 2px 2px 0 #ffe66d;
+        }
+
+        /* Scale Styles */
+        /* .container_weight .scale-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            margin: 40px 0;
+            height: 250px;
+            position: relative;
+        } */
+
+        /* .container_weight .scale-side {
+            text-align: center;
+            margin: 0 30px;
+        } */
+
+        /* .container_weight .scale-plate {
+            width: 150px;
+            height: 20px;
+            background: #8B4513;
+            border-radius: 10px;
+            margin: 0 auto 10px;
+            position: relative;
+            box-shadow: 0 5px 0 #654321;
+        } */
+
+        /* .container_weight .scale-plate::before {
+            content: '';
+            position: absolute;
+            width: 180px;
+            height: 10px;
+            background: #8B4513;
+            top: -10px;
+            left: -15px;
+            border-radius: 5px;
+        } */
+
+        /* .container_weight .scale-stand {
+            width: 20px;
+            height: 150px;
+            background: #8B4513;
+            margin: 0 auto;
+            border-radius: 5px;
+            box-shadow: 0 5px 0 #654321;
+        } */
+
+        /* .container_weight .scale-base {
+            width: 100px;
+            height: 20px;
+            background: #8B4513;
+            margin: 0 auto;
+            border-radius: 5px;
+            box-shadow: 0 5px 0 #654321;
+        } */
+
+        /* Buttons */
+        .container_weight .btn {
+            background: #4ecdc4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 5px 0 #2a9d8f;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .container_weight .btn:hover {
+            background: #3dbeb5;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 0 #2a9d8f;
+        }
+
+        .container_weight .btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 3px 0 #2a9d8f;
+        }
+
+        .container_weight .btn-back {
+            background: #ff6b6b;
+            box-shadow: 0 5px 0 #e05555;
+        }
+
+        .container_weight .btn-back:hover {
+            background: #ff5252;
+            box-shadow: 0 8px 0 #e05555;
+        }
+
+
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .container_weight .bounce {
+            animation: bounce 1s infinite;
+        }
+
+        /* Fact Box */
+        .container_weight .fact-box {
+            background: #ffe66d;
+            padding: 15px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.2rem;
+            color: #1a535c;
+            border: 3px dashed #ff9e7d;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container_weight .comparison-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .container_weight .game-options {
+                grid-template-columns: 1fr;
+            }
+            
+            /* .container_weight .scale-container {
+                flex-direction: column;
+                height: auto;
+                align-items: center;
+            } */
+        }

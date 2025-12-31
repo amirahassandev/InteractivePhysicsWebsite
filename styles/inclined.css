@@ -1,0 +1,30 @@
+.inclined_container{
+    font-family: Arial, sans-serif;
+    background: #f0f9ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+.inclined h1 {
+    margin-bottom: 10px;
+    color: #333;
+}
+canvas {
+    border: 2px solid #333;
+    background: #fff;
+    margin-top: 10px;
+}
+.controls {
+    margin: 10px 0;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+select, input, button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+}
